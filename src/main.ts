@@ -1,4 +1,5 @@
 // General stuff
+import http from "http";
 import semver from "semver";
 import yargs from "yargs";
 import path from "path";
@@ -11,6 +12,19 @@ import jsYaml from "js-yaml";
 import fs from "fs";
 import R from "ramda";
 import os from "os";
+
+//http stuff
+const host = 'localhost';
+const port = 80;
+const requestListener = function (req: any, res: any) {
+    res.setHeader("Content-Type", "application/json");
+    res.writeHead(200);
+    res.end(`{"message": "Hi!"}`);
+};
+const server = http.createServer(requestListener);
+server.listen(port, host, () => {
+    console.log(`Server is running on http://${host}:${port}`);
+});
 
 // Telegram stuff
 import { Telegraf } from "telegraf";

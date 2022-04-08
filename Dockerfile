@@ -11,4 +11,6 @@ USER node
 
 VOLUME /opt/TediCross/data/
 
+EXPOSE 80/tcp
+
 ENTRYPOINT /usr/local/bin/npm start -- -c data/settings.yaml
